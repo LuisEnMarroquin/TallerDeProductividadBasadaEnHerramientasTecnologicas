@@ -1,0 +1,22 @@
+body {
+  text-align: center;
+  align-items: center;
+}
+
+h3 {
+  color: red;
+}
+
+span {
+  width: 200px;
+  color: gray;
+  display: inline-block;
+}
+
+input {
+  width: 200px;
+}
+
+select {
+  width: 200px;
+}

@@ -1,0 +1,6 @@
+# Office
+~*.tmp
+~$*.docx
+
+# Eclipse
+build/
