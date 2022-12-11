@@ -1,0 +1,15 @@
+{
+  "name": "single-spa",
+  "private": true,
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "start": "lerna run --parallel --stream start",
+    "build": "lerna run --stream build"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "lerna": "^6.1.0"
+  }
+}
