@@ -1,5 +1,7 @@
 {
   "name": "@luisenmarroquin/app-header-project",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
   "scripts": {
     "start": "webpack serve",
     "start:standalone": "webpack serve --env standalone",
