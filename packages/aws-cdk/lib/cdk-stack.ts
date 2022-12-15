@@ -40,12 +40,12 @@ export class CdkStack extends Stack {
     new BucketDeployment(this, "DeployFrontendHeader", {
       sources: [Source.asset(headerAppFolder)],
       destinationBucket: websiteBucket,
-      destinationKeyPrefix: `${appRemoteDirectory}/header`,
+      destinationKeyPrefix: `${appRemoteDirectory}/header/`,
     })
     new BucketDeployment(this, "DeployFrontendContent", {
       sources: [Source.asset(contentAppFolder)],
       destinationBucket: websiteBucket,
-      destinationKeyPrefix: `${appRemoteDirectory}/content`,
+      destinationKeyPrefix: `${appRemoteDirectory}/content/`,
     })
 
     const oai = OriginAccessIdentity.fromOriginAccessIdentityId(this, "AccessIdentity", originAccessIdentityID)
