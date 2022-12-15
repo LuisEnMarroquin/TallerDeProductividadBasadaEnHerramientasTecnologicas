@@ -4,16 +4,16 @@ import "source-map-support/register"
 
 const app = new CdkApp()
 
-const baseDomain = "luismarroquin.com"
+const baseDomain = "aws.luismarroquin.com"
 
 new CdkStack(app, "taller-tecmi-main", {
   env: { region: "us-east-1" },
   branch: "main",
-  domainURL: `main.tecmi.${baseDomain}`,
+  domainURL: `taller-main.${baseDomain}`,
 })
 
 new CdkStack(app, "taller-tecmi-test", {
   env: { region: "us-east-1" },
   branch: "test",
-  domainURL: `test.tecmi.${baseDomain}`,
+  domainURL: `taller-test.${baseDomain}`,
 })

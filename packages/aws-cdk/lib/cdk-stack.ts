@@ -12,7 +12,7 @@ interface MultiStackProps extends StackProps {
   domainURL: string
 }
 
-const certificateARN = "arn:aws:acm:us-east-1:057069682979:certificate/c954f6ee-6569-4f14-9c34-32ae88d99044"
+const certificateARN = "arn:aws:acm:us-east-1:057069682979:certificate/11f5438c-f3b8-42f3-8e32-fcbae7ebf564"
 const originAccessIdentityID = "E2N0GCPC8GP9M5"
 const bucketName = "enrique"
 
