@@ -55,7 +55,7 @@ export class CdkStack extends Stack {
     const distribution = new Distribution(this, "CloudFrontDistro", {
       defaultBehavior: {
         origin: new S3Origin(websiteBucket, {
-          originPath: `/${appRemoteDirectory}/root`,
+          originPath: `/${appRemoteDirectory}`,
           originAccessIdentity: oai,
         }),
         cachePolicy: CachePolicy.CACHING_DISABLED,
@@ -66,15 +66,15 @@ export class CdkStack extends Stack {
         {
           httpStatus: 403,
           responseHttpStatus: 200,
-          responsePagePath: "/index.html",
+          responsePagePath: "/root/index.html",
         },
         {
           httpStatus: 404,
           responseHttpStatus: 200,
-          responsePagePath: "/index.html",
+          responsePagePath: "/root/index.html",
         },
       ],
-      defaultRootObject: "index.html",
+      defaultRootObject: "root/index.html",
       domainNames: [props.domainURL],
       certificate: certificate,
       priceClass: PriceClass.PRICE_CLASS_100,
