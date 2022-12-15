@@ -20,19 +20,32 @@ export class CdkStack extends Stack {
   constructor(scope: Construct, id: string, props: MultiStackProps) {
     super(scope, id, props)
 
-    const appLocalFolder = join(__dirname, "..", "app-root", "dist")
+    const rootAppFolder = join(__dirname, "..", "..", "app-root", "dist")
+    const headerAppFolder = join(__dirname, "..", "..", "app-header", "dist")
+    const contentAppFolder = join(__dirname, "..", "..", "app-content", "dist")
+
     const appRemoteDirectory = `taller-tecmi-${props.branch}`
 
-    console.log({ __dirname, appLocalFolder, appRemoteDirectory })
+    console.log({ __dirname, rootAppFolder, headerAppFolder, contentAppFolder, appRemoteDirectory })
 
     // Get S3 bucket
     const websiteBucket = Bucket.fromBucketName(this, "UseExistingBucket", bucketName)
 
     // Deploy UI generated code to the bucket
-    new BucketDeployment(this, "DeployFrontend", {
-      sources: [Source.asset(appLocalFolder)],
+    new BucketDeployment(this, "DeployFrontendRoot", {
+      sources: [Source.asset(rootAppFolder)],
       destinationBucket: websiteBucket,
       destinationKeyPrefix: appRemoteDirectory,
+    })
+    new BucketDeployment(this, "DeployFrontendHeader", {
+      sources: [Source.asset(headerAppFolder)],
+      destinationBucket: websiteBucket,
+      destinationKeyPrefix: `${appRemoteDirectory}/header`,
+    })
+    new BucketDeployment(this, "DeployFrontendContent", {
+      sources: [Source.asset(contentAppFolder)],
+      destinationBucket: websiteBucket,
+      destinationKeyPrefix: `${appRemoteDirectory}/content`,
     })
 
     const oai = OriginAccessIdentity.fromOriginAccessIdentityId(this, "AccessIdentity", originAccessIdentityID)
