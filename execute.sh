@@ -32,6 +32,3 @@ yarn install
 
 logFX Building all projects
 yarn build
-
-logFX Deploying all projects
-yarn cloud
