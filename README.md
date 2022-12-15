@@ -4,8 +4,12 @@ Este es un proyecto con single-spa que tiene 3 subproyectos que en conjunto form
 
 Se puede clonar usando git con cualquiera de las siguientes URLs dependiendo el protocolo que guste usar
 
-- SSH: git@github.com:LuisEnMarroquin/TallerDeProductividadBasadaEnHerramientasTecnologicas.git
-- HTTPS: https://github.com/LuisEnMarroquin/TallerDeProductividadBasadaEnHerramientasTecnologicas.git
+```shell
+# SSH
+git clone git@github.com:LuisEnMarroquin/TallerDeProductividadBasadaEnHerramientasTecnologicas.git taller-productividad
+# HTTPS
+git clone https://github.com/LuisEnMarroquin/TallerDeProductividadBasadaEnHerramientasTecnologicas.git taller-productividad
+```
 
 ## Versiones de software
 
