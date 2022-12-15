@@ -1,0 +1,16 @@
+name: AWS CDK
+
+on:
+  push:
+    branches:
+      - main
+      - test
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: sh execute.sh "${{ secrets.AWS_KEY }}" "${{ secrets.AWS_SECRET }}"
+      - run: cdk deploy --require-approval never taller-tecmi-${{ github.ref_name }}
+        working-directory: ./packages/aws-cdk
