@@ -32,3 +32,7 @@ yarn install
 
 logFX Building all projects
 yarn build
+
+logFX Copy header and footer to root project
+cp -R packages/app-header/dist packages/app-root/dist/header
+cp -R packages/app-footer/dist packages/app-root/dist/footer

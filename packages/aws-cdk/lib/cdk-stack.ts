@@ -21,12 +21,10 @@ export class CdkStack extends Stack {
     super(scope, id, props)
 
     const rootAppFolder = join(__dirname, "..", "..", "app-root", "dist")
-    const headerAppFolder = join(__dirname, "..", "..", "app-header", "dist")
-    const footerAppFolder = join(__dirname, "..", "..", "app-footer", "dist")
 
     const appRemoteDirectory = `taller-tecmi-${props.branch}`
 
-    console.log({ __dirname, rootAppFolder, headerAppFolder, footerAppFolder, appRemoteDirectory })
+    console.log({ __dirname, rootAppFolder, appRemoteDirectory })
 
     // Get S3 bucket
     const websiteBucket = Bucket.fromBucketName(this, "UseExistingBucket", bucketName)
@@ -35,17 +33,7 @@ export class CdkStack extends Stack {
     new BucketDeployment(this, "DeployFrontendRoot", {
       sources: [Source.asset(rootAppFolder)],
       destinationBucket: websiteBucket,
-      destinationKeyPrefix: `${appRemoteDirectory}/root`,
-    })
-    new BucketDeployment(this, "DeployFrontendHeader", {
-      sources: [Source.asset(headerAppFolder)],
-      destinationBucket: websiteBucket,
-      destinationKeyPrefix: `${appRemoteDirectory}/header`,
-    })
-    new BucketDeployment(this, "DeployFrontendFooter", {
-      sources: [Source.asset(footerAppFolder)],
-      destinationBucket: websiteBucket,
-      destinationKeyPrefix: `${appRemoteDirectory}/footer`,
+      destinationKeyPrefix: `${appRemoteDirectory}`,
     })
 
     const oai = OriginAccessIdentity.fromOriginAccessIdentityId(this, "AccessIdentity", originAccessIdentityID)
@@ -66,15 +54,15 @@ export class CdkStack extends Stack {
         {
           httpStatus: 403,
           responseHttpStatus: 200,
-          responsePagePath: "/root/index.html",
+          responsePagePath: "/index.html",
         },
         {
           httpStatus: 404,
           responseHttpStatus: 200,
-          responsePagePath: "/root/index.html",
+          responsePagePath: "/index.html",
         },
       ],
-      defaultRootObject: "root/index.html",
+      defaultRootObject: "index.html",
       domainNames: [props.domainURL],
       certificate: certificate,
       priceClass: PriceClass.PRICE_CLASS_100,
