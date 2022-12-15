@@ -38,3 +38,8 @@ yarn start
 ```
 
 El proyecto estará corriendo en: `localhost:5555`
+
+## AWS deployments
+
+- taller-main.aws.luismarroquin.com
+- taller-test.aws.luismarroquin.com
