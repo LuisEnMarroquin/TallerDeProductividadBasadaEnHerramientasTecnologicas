@@ -32,19 +32,19 @@ export class CdkStack extends Stack {
     const websiteBucket = Bucket.fromBucketName(this, "UseExistingBucket", bucketName)
 
     // Deploy UI generated code to the bucket
-    const original = new BucketDeployment(this, "DeployFrontendRoot", {
+    new BucketDeployment(this, "DeployFrontendRoot", {
       sources: [Source.asset(rootAppFolder)],
       destinationBucket: websiteBucket,
       destinationKeyPrefix: appRemoteDirectory,
     })
     new BucketDeployment(this, "DeployFrontendHeader", {
       sources: [Source.asset(headerAppFolder)],
-      destinationBucket: original.deployedBucket,
+      destinationBucket: websiteBucket,
       destinationKeyPrefix: `${appRemoteDirectory}/header/`,
     })
     new BucketDeployment(this, "DeployFrontendFooter", {
       sources: [Source.asset(footerAppFolder)],
-      destinationBucket: original.deployedBucket,
+      destinationBucket: websiteBucket,
       destinationKeyPrefix: `${appRemoteDirectory}/footer/`,
     })
 
