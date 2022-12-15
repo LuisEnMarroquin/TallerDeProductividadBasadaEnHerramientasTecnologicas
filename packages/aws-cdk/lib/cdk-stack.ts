@@ -35,17 +35,17 @@ export class CdkStack extends Stack {
     new BucketDeployment(this, "DeployFrontendRoot", {
       sources: [Source.asset(rootAppFolder)],
       destinationBucket: websiteBucket,
-      destinationKeyPrefix: appRemoteDirectory,
+      destinationKeyPrefix: `${appRemoteDirectory}/root`,
     })
     new BucketDeployment(this, "DeployFrontendHeader", {
       sources: [Source.asset(headerAppFolder)],
       destinationBucket: websiteBucket,
-      destinationKeyPrefix: `${appRemoteDirectory}/header/`,
+      destinationKeyPrefix: `${appRemoteDirectory}/header`,
     })
     new BucketDeployment(this, "DeployFrontendFooter", {
       sources: [Source.asset(footerAppFolder)],
       destinationBucket: websiteBucket,
-      destinationKeyPrefix: `${appRemoteDirectory}/footer/`,
+      destinationKeyPrefix: `${appRemoteDirectory}/footer`,
     })
 
     const oai = OriginAccessIdentity.fromOriginAccessIdentityId(this, "AccessIdentity", originAccessIdentityID)
@@ -55,7 +55,7 @@ export class CdkStack extends Stack {
     const distribution = new Distribution(this, "CloudFrontDistro", {
       defaultBehavior: {
         origin: new S3Origin(websiteBucket, {
-          originPath: `/${appRemoteDirectory}`,
+          originPath: `/${appRemoteDirectory}/root`,
           originAccessIdentity: oai,
         }),
         cachePolicy: CachePolicy.CACHING_DISABLED,
