@@ -13,8 +13,8 @@ registerApplication({
 })
 
 registerApplication({
-  name: "@luisenmarroquin/app-content-project",
-  app: () => System.import<LifeCycles>("@luisenmarroquin/app-content-project"),
+  name: "@luisenmarroquin/app-footer-project",
+  app: () => System.import<LifeCycles>("@luisenmarroquin/app-footer-project"),
   activeWhen: ["/"],
 })
 

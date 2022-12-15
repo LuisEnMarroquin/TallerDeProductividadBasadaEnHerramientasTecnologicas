@@ -4,7 +4,7 @@
     "jsx": "react-jsx",
     "declarationDir": "dist"
   },
-  "files": ["src/luisenmarroquin-app-content-project.tsx"],
+  "files": ["src/luisenmarroquin-app-footer-project.tsx"],
   "include": ["src/**/*"],
   "exclude": ["src/**/*.test*"]
 }

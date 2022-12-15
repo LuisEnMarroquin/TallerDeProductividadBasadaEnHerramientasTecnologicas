@@ -22,30 +22,30 @@ export class CdkStack extends Stack {
 
     const rootAppFolder = join(__dirname, "..", "..", "app-root", "dist")
     const headerAppFolder = join(__dirname, "..", "..", "app-header", "dist")
-    const contentAppFolder = join(__dirname, "..", "..", "app-content", "dist")
+    const footerAppFolder = join(__dirname, "..", "..", "app-footer", "dist")
 
     const appRemoteDirectory = `taller-tecmi-${props.branch}`
 
-    console.log({ __dirname, rootAppFolder, headerAppFolder, contentAppFolder, appRemoteDirectory })
+    console.log({ __dirname, rootAppFolder, headerAppFolder, footerAppFolder, appRemoteDirectory })
 
     // Get S3 bucket
     const websiteBucket = Bucket.fromBucketName(this, "UseExistingBucket", bucketName)
 
     // Deploy UI generated code to the bucket
-    new BucketDeployment(this, "DeployFrontendRoot", {
+    const original = new BucketDeployment(this, "DeployFrontendRoot", {
       sources: [Source.asset(rootAppFolder)],
       destinationBucket: websiteBucket,
       destinationKeyPrefix: appRemoteDirectory,
     })
     new BucketDeployment(this, "DeployFrontendHeader", {
       sources: [Source.asset(headerAppFolder)],
-      destinationBucket: websiteBucket,
+      destinationBucket: original.deployedBucket,
       destinationKeyPrefix: `${appRemoteDirectory}/header/`,
     })
-    new BucketDeployment(this, "DeployFrontendContent", {
-      sources: [Source.asset(contentAppFolder)],
-      destinationBucket: websiteBucket,
-      destinationKeyPrefix: `${appRemoteDirectory}/content/`,
+    new BucketDeployment(this, "DeployFrontendFooter", {
+      sources: [Source.asset(footerAppFolder)],
+      destinationBucket: original.deployedBucket,
+      destinationKeyPrefix: `${appRemoteDirectory}/footer/`,
     })
 
     const oai = OriginAccessIdentity.fromOriginAccessIdentityId(this, "AccessIdentity", originAccessIdentityID)
