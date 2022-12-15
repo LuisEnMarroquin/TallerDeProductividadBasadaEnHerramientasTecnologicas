@@ -41,5 +41,5 @@ El proyecto estará corriendo en: `localhost:5555`
 
 ## AWS deployments
 
-- taller-main.aws.luismarroquin.com
-- taller-test.aws.luismarroquin.com
+- https://taller-main.aws.luismarroquin.com
+- https://taller-test.aws.luismarroquin.com
