@@ -9782,7 +9782,7 @@ ts-config-single-spa@^3.0.0:
   resolved "https://registry.yarnpkg.com/ts-config-single-spa/-/ts-config-single-spa-3.0.0.tgz#113112236cc1e13a59b6d351a57ae93aed7c763f"
   integrity sha512-SS24+FHn9mi0awcoHN4l6uioBxPjgOnwI8adVZeNnw8oXJ8VyAGDqBfRF1EMVtd9Va0bxA8kkeU0SWtLS/Guvg==
 
-ts-node@^10.7.0:
+ts-node@^10.7.0, ts-node@^10.9.1:
   version "10.9.1"
   resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-10.9.1.tgz#e73de9102958af9e1f0b168a6ff320e25adcff4b"
   integrity sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==
