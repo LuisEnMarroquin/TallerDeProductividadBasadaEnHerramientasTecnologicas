@@ -11,6 +11,6 @@
     "packages/*"
   ],
   "dependencies": {
-    "lerna": "^6.3.0"
+    "lerna": "^6.5.1"
   }
 }
