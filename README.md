@@ -41,5 +41,7 @@ El proyecto estará corriendo en: `localhost:5555`
 
 ## AWS deployments
 
+THEY ARE NOW REMOVED
+
 - https://taller-main.aws.luismarroquin.com
 - https://taller-test.aws.luismarroquin.com
